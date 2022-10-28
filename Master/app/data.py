@@ -9,10 +9,9 @@ def init():
     secondariesList = []
     messageList = []
     urls = { 
-        'http://127.0.0.1:8000/addItem', 
-        'http://127.0.0.1:8002/addItem', 
-        #'http://127.0.0.1:8005/addItem', 
-        # 'http://127.0.0.1:8007/addItem' 
+        'http://172.17.0.2:81/addItem', 
+        'http://172.17.0.3:82/addItem', 
+        #'http://localhost:83/addItem'
         }
   
     logger = logging.getLogger("MasterApp")

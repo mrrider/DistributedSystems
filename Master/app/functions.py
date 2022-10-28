@@ -29,18 +29,15 @@ class CustomFormatter(logging.Formatter):
         formatter = logging.Formatter(log_fmt)
         return formatter.format(record)
 
-    id: int
-    message: str  
-    createdDate: datetime.datetime   
-
 async def post(secondary, session, message, errors):
     try:
-        async with session.post(url=secondary.url, json=message) as response:
+        timeout = aiohttp.ClientTimeout(total=30)
+        async with session.post(url=secondary.url, json=message, timeout=timeout) as response:
             data.logger.info("Request to host id={}, utl='{}' started....".format(secondary.id, secondary.url))
             resp = await response.json()
             data.logger.info("Request to host id={}, utl='{}' finised successfull".format(secondary.id, secondary.url))
     except Exception as e:
-        data.logger.error("Request to host id={}, utl='{}' failed.".format(secondary.id, secondary.url))
+        data.logger.error("Request to host id={}, utl='{}' failed. Error: '{}'".format(secondary.id, secondary.url, e))
         errors.append("Request to host id={}, utl='{}' failed.".format(secondary.id, secondary.url))
 
 async def main(urls, message, errors):
