@@ -1,0 +1,10 @@
+version: '3.4'
+
+services:
+  master:
+    image: master
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    ports:
+      - 8001:8001
