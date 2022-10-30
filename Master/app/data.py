@@ -9,8 +9,8 @@ def init():
     secondariesList = []
     messageList = []
     urls = { 
-        'http://172.17.0.2:81/addItem', 
-        'http://172.17.0.3:82/addItem', 
+        'http://172.17.0.3:81/addItem', 
+        'http://172.17.0.4:82/addItem', 
         #'http://localhost:83/addItem'
         }
   
